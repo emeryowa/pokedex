@@ -1,4 +1,18 @@
-<p>detail works!</p>
 
 <p>{{pokemon.id}}</p>
 <p>{{pokemon.name}}</p>
+
+<div *ngIf="pokemon" class="grid grid-cols-2">
+    <div>
+        <p>Moves:</p>
+        <ul *ngFor="let move of pokemon.moves">
+            <li>{{move.move.name}}</li>
+        </ul>
+    </div>
+    <div>
+        <p>Stats:</p>
+        <ul *ngFor="let stat of pokemon.stats">
+            <li>{{stat.stat.name}}</li>
+        </ul>
+    </div>
+  </div>

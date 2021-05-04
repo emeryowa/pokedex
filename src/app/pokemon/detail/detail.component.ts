@@ -17,6 +17,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemon = this.route.snapshot.data.pokemon;
+    console.log(this.route.snapshot.data.pokemon);
   }
 
 }
