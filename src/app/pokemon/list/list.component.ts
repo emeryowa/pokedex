@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { PokemonHttpResponse } from 'src/shared/interfaces/pokemon';
+import { PokemonListHttpResponse } from 'src/shared/interfaces/pokemon';
 import { ApiService } from 'src/shared/services/api.service';
 import { startWith, switchMap, tap } from 'rxjs/operators';
 
@@ -11,8 +11,8 @@ import { startWith, switchMap, tap } from 'rxjs/operators';
 })
 export class ListComponent implements OnInit {
 
-  data$: Observable<PokemonHttpResponse>;
-  fetchData = new Subject<PokemonHttpResponse>();
+  data$: Observable<PokemonListHttpResponse>;
+  fetchData = new Subject<PokemonListHttpResponse>();
   pagination: any = {
     count: 0,
     next: '',

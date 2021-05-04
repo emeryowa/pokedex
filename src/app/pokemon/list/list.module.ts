@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TeaserComponent } from './teaser/teaser.component';
 import { ListComponent } from './list.component';
-import { ApiService } from 'src/shared/services/api.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -11,10 +11,8 @@ import { ApiService } from 'src/shared/services/api.service';
     TeaserComponent,
   ],
   imports: [
-    CommonModule
-  ],
-  providers: [
-    ApiService,
+    CommonModule,
+    RouterModule,
   ],
   exports: [
     ListComponent,
