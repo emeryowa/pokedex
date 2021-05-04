@@ -14,7 +14,12 @@ export class ApiService {
     private http: HttpClient,
   ) { }
 
-  public get(): Observable<PokemonHttpResponse> {
-    return this.http.get<PokemonHttpResponse>(`${this.BASE_URL}pokemon`);
+  public get(url: string): Observable<PokemonHttpResponse> {
+    
+    if (!url) {
+      url = `${this.BASE_URL}pokemon`;
+    }
+
+    return this.http.get<PokemonHttpResponse>(url);
   }
 }
