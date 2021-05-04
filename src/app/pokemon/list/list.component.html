@@ -1,0 +1,7 @@
+<div *ngIf="(data$ | async) as data; else loadingPokemon" class="table-responsive">
+    <app-teaser *ngFor="let pokemon of data.results" [pokemon]="pokemon"></app-teaser>
+</div>
+
+<ng-template #loadingPokemon>
+    Pokemon are loading...
+</ng-template>
