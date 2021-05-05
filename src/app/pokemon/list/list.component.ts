@@ -19,6 +19,7 @@ export class ListComponent implements OnInit {
     count: 0,
     limit: 19,
     offset: 19,
+    search: '',
     total: 0,
   };
 
@@ -43,7 +44,6 @@ export class ListComponent implements OnInit {
   }
 
   public search(query: string) {
-    console.log(query);
-
+    this.pagination.search = query;
   }
 }
