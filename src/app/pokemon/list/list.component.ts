@@ -42,4 +42,9 @@ export class ListComponent implements OnInit {
   public paginate(to: 'next' |'prev'): void {
     this.fetchData.next();
   }
+
+  public search(query: string) {
+    console.log(query);
+
+  }
 }
