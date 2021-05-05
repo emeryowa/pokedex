@@ -1,7 +1,19 @@
-<div *ngIf="(data$ | async) as data; else loadingPokemon" class="table-responsive">
-    <app-teaser *ngFor="let pokemon of data.results" [pokemon]="pokemon"></app-teaser>
+<div class="columns">
+    <div class="column has-text-right">
+        <button class="button mr-1">My Wishlist</button>
+        <button class="button">My Pokemon</button>
 
-    <button (click)="paginate('next')">Load next</button>
+    </div>
+</div>
+
+<div *ngIf="(data$ | async) as data; else loadingPokemon" class="columns is-multiline">
+    <app-teaser *ngFor="let pokemon of data.results" class="column is-one-quarter" [pokemon]="pokemon"></app-teaser>
+</div>
+
+<div class="columns">
+    <div class="column has-text-right">
+        <button class="button" (click)="paginate('next')">Load next</button>
+    </div>
 </div>
 
 <ng-template #loadingPokemon>
