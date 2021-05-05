@@ -11,6 +11,9 @@
 </div>
 
 <div class="columns">
+    <div class="column">
+        <small>Showing {{pagination.count}} of {{pagination.total}} pokemon</small>
+    </div>
     <div class="column has-text-right">
         <button class="button" (click)="loadMore()">Load more</button>
     </div>

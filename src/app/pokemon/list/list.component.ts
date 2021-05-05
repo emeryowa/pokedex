@@ -16,9 +16,10 @@ export class ListComponent implements OnInit {
   fetchData = new Subject<PokemonListHttpResponse>();
 
   pagination: any = {
-    count: 0,
+    count: 19,
     limit: 19,
     offset: 19,
+    page: 1,
     search: '',
     total: 0,
   };
@@ -40,7 +41,9 @@ export class ListComponent implements OnInit {
   }
 
   public loadMore(): void {
-    this.pagination.offset += this.pagination.limit;
+    this.pagination.offset += this.pagination.limit + 1;
+    this.pagination.page += 1;
+    this.pagination.count = this.pagination.page * this.pagination.limit + (this.pagination.page - 1);
   }
 
   public search(query: string) {
