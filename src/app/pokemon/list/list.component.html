@@ -7,7 +7,7 @@
 </div>
 
 <div *ngIf="(data$ | async) as data; else loadingPokemon" class="columns is-multiline">
-    <app-teaser *ngFor="let pokemon of data.results" class="column is-one-quarter" [pokemon]="pokemon"></app-teaser>
+    <app-teaser *ngFor="let pokemon of data" class="column is-one-quarter" [pokemon]="pokemon"></app-teaser>
 </div>
 
 <div class="columns">

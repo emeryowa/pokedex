@@ -1,21 +1,21 @@
-export interface Pokemon {
+export interface IPokemon {
     id: number;
-    moves: any[],
     name: string;
-    stats: any[],
-    url: string;
+    moves?: any[],
+    stats?: any[],
+    url?: string;
 }
 
 export interface PokemonHttpResponse {
     count: number;
     next: string|null;
     previous: string|null;
-    results: Pokemon[];
+    results: IPokemon[];
 }
 
 export interface PokemonListHttpResponse {
     count: number;
     next: string|null;
     previous: string|null;
-    results: Pokemon[];
+    results: any[];
 }

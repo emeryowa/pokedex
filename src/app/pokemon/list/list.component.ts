@@ -11,7 +11,7 @@ import { startWith, switchMap, tap } from 'rxjs/operators';
 })
 export class ListComponent implements OnInit {
 
-  data$: Observable<PokemonListHttpResponse>;
+  data$: Observable<any>;
   fetchData = new Subject<PokemonListHttpResponse>();
   pagination: any = {
     count: 0,
@@ -30,12 +30,7 @@ export class ListComponent implements OnInit {
   private handleRequest(): void {
     this.data$ = this.fetchData.pipe(
       startWith([]),
-      switchMap(() => this.api.get(this.pagination.next)),
-      tap(data => {
-        this.pagination.count = data.count;
-        this.pagination.next = data.next;
-        this.pagination.prev = data.previous;
-      })
+      switchMap(() => this.api.getAll()),
     );
   }
 

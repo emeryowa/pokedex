@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Pokemon } from 'src/shared/models/pokemon';
 
 @Component({
   selector: 'app-teaser',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TeaserComponent implements OnInit {
 
-  @Input() pokemon: any;
+  @Input() pokemon: Pokemon;
 
   constructor() { }
 
