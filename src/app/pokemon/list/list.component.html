@@ -7,12 +7,12 @@
 </div>
 
 <div *ngIf="(data$ | async) as data; else loadingPokemon" class="columns is-multiline">
-    <app-teaser *ngFor="let pokemon of data" class="column is-one-quarter" [pokemon]="pokemon"></app-teaser>
+    <app-teaser *ngFor="let pokemon of data | slice:0:pagination.offset" class="column is-one-quarter" [pokemon]="pokemon"></app-teaser>
 </div>
 
 <div class="columns">
     <div class="column has-text-right">
-        <button class="button" (click)="paginate('next')">Load next</button>
+        <button class="button" (click)="loadMore()">Load more</button>
     </div>
 </div>
 

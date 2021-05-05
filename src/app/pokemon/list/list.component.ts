@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { PokemonListHttpResponse } from 'src/shared/interfaces/pokemon';
 import { ApiService } from 'src/shared/services/api.service';
 import { startWith, switchMap, tap } from 'rxjs/operators';
+import { Pokemon } from 'src/shared/models/pokemon';
 
 @Component({
   selector: 'app-list',
@@ -11,12 +12,14 @@ import { startWith, switchMap, tap } from 'rxjs/operators';
 })
 export class ListComponent implements OnInit {
 
-  data$: Observable<any>;
+  data$: Observable<Pokemon[]>;
   fetchData = new Subject<PokemonListHttpResponse>();
+
   pagination: any = {
     count: 0,
-    next: '',
-    prev: '',
+    limit: 19,
+    offset: 19,
+    total: 0,
   };
 
   constructor(
@@ -31,11 +34,12 @@ export class ListComponent implements OnInit {
     this.data$ = this.fetchData.pipe(
       startWith([]),
       switchMap(() => this.api.getAll()),
+      tap(data => this.pagination.total = data.length)
     );
   }
 
-  public paginate(to: 'next' |'prev'): void {
-    this.fetchData.next();
+  public loadMore(): void {
+    this.pagination.offset += this.pagination.limit;
   }
 
   public search(query: string) {
