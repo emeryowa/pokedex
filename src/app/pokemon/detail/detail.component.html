@@ -1,18 +1,12 @@
-
-<p>{{pokemon.id}}</p>
-<p>{{pokemon.name}}</p>
-
-<div *ngIf="pokemon" class="grid grid-cols-2">
-    <div>
-        <p>Moves:</p>
-        <ul *ngFor="let move of pokemon.moves">
-            <li>{{move.move.name}}</li>
-        </ul>
+<div class="columns is-multiline">
+    <div class="column is-full has-text-centered">
+        <h1 class="title">{{pokemon.name}}</h1>
+        <img [src]="pokemon.sprites.front_shiny">
     </div>
-    <div>
-        <p>Stats:</p>
-        <ul *ngFor="let stat of pokemon.stats">
-            <li>{{stat.stat.name}}</li>
-        </ul>
+    <div class="column is-half">
+        <app-moves [moves]="pokemon.moves"></app-moves>
     </div>
-  </div>
+    <div class="column is-half">
+        <app-stats [stats]="pokemon.stats"></app-stats>
+    </div>
+</div>

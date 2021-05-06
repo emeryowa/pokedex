@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IPokemon } from 'src/shared/interfaces/pokemon';
 
 @Component({
   selector: 'app-detail',
@@ -9,7 +8,7 @@ import { IPokemon } from 'src/shared/interfaces/pokemon';
 })
 export class DetailComponent implements OnInit {
 
-  pokemon: IPokemon;
+  pokemon: any;
 
   constructor(
     private route: ActivatedRoute,
