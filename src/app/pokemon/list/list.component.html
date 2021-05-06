@@ -3,13 +3,13 @@
         <app-search-input class="mr-1" (onSearch)="search($event)"></app-search-input>        
     </div>
     <div class="column has-text-right">
-        <button class="button mr-1">My Wishlist</button>
-        <button class="button">My Pokemon</button>
+        <button class="button mr-1" [ngClass]="{'is-active': isFavoriteFilterActive}" (click)="isFavoriteFilterActive = !isFavoriteFilterActive">My Wishlist</button>
+        <button class="button" [ngClass]="{'is-active': isCaughtFilterActive}" (click)="isCaughtFilterActive = !isCaughtFilterActive">My Pokemon</button>
     </div>
 </div>
 
 <div *ngIf="(data$ | async) as data; else loadingPokemon" class="columns is-multiline">
-    <app-teaser *ngFor="let pokemon of data | slice:0:pagination.offset | filter: {'name': pagination.search}" class="column is-one-quarter" [pokemon]="pokemon"></app-teaser>
+    <app-teaser *ngFor="let pokemon of data | slice:0:pagination.offset | filter: {'name': pagination.search, 'favorited': isFavoriteFilterActive, 'caught': isCaughtFilterActive}" class="column is-one-quarter" [pokemon]="pokemon"></app-teaser>
 </div>
 
 <div class="columns">

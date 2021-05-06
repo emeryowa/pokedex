@@ -12,18 +12,21 @@
         </div>
     </div>
     <footer class="card-footer">
-        <a href="#" class="card-footer-item">
-            <span class="icon">
-                <i class="material-icons">star_border</i>
-            </span>
-        </a>
-        <a href="#" class="card-footer-item">
-            <span class="icon">
-                <i class="material-icons">
-                    catching_pokemon
-                </i>
-            </span>
-        </a>
+        <div class="card-footer-item">
+            <button class="button" (click)="favorite()">
+                <span class="icon">
+                    <i *ngIf="!pokemon.favorited" class="material-icons">star_border</i>
+                    <i *ngIf="pokemon.favorited" class="material-icons">star</i>
+                </span>
+            </button>
+        </div>
+        <div class="card-footer-item">
+            <button class="button catch-button" (click)="catch()">
+                <span class="icon">
+                    <i class="material-icons" [ngClass]="{'active': pokemon.caught}">catching_pokemon</i>
+                </span>
+            </button>
+        </div>
       </footer>
 </div>
 

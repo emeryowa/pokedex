@@ -15,4 +15,12 @@ export class TeaserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public catch() {
+    this.pokemon.caught = !this.pokemon.caught;
+  }
+
+  public favorite() {
+    this.pokemon.favorited = !this.pokemon.favorited;
+  }
+
 }

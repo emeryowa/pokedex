@@ -29,6 +29,10 @@
          if (!obj[prop]) {
            return false;
          }
+
+         if (typeof obj[prop] === "boolean"){
+           return obj[prop];
+        }
  
          return obj[prop].indexOf(filters[prop]) > -1 || obj[prop].toLowerCase().indexOf(filters[prop]) > -1;
        });

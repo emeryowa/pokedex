@@ -24,6 +24,9 @@ export class ListComponent implements OnInit {
     total: 0,
   };
 
+  isCaughtFilterActive: boolean = false;
+  isFavoriteFilterActive: boolean = false;
+
   constructor(
     private api: ApiService,
   ) { }

@@ -1,6 +1,8 @@
 export interface IPokemon {
     id: number;
     name: string;
+    caught?: boolean;
+    favorited?: boolean;
     moves?: any[],
     stats?: any[],
     url?: string;
