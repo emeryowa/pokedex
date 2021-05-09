@@ -3,11 +3,11 @@ import { IPokemon, IPokemonSprite } from "../interfaces/pokemon";
 export class Pokemon {
     id: number;
     name: string;
-    caught: boolean;
-    favorited: boolean;
-    moves: any[];
-    sprites: PokemonSprite;
-    stats: any[];
+    caught?: boolean;
+    favorited?: boolean;
+    moves?: any[];
+    sprites?: PokemonSprite|any;
+    stats?: any[];
 
     constructor(options: IPokemon) {
         this.id = options.id;
