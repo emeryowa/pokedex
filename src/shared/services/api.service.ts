@@ -39,15 +39,6 @@ export class ApiService {
     )
   }
 
-  public get(url: string): Observable<PokemonListHttpResponse> {
-    
-    if (!url) {
-      url = `${this.BASE_URL}pokemon`;
-    }
-
-    return this.http.get<PokemonListHttpResponse>(url);
-  }
-
   public getPokemon(name: string | null): Observable<IPokemon> {
     return this.http.get<IPokemon>(`${this.BASE_URL}pokemon/${name}`);
   }
