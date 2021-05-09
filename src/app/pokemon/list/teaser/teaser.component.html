@@ -1,19 +1,15 @@
 <div class="card">
-    <div class="card-content">
+    <div class="card-content has-text-centered">
         <div class="media">
-            <div class="media-left">
-                <figure class="image is-48x48">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png" alt="Placeholder image">
-                </figure>
-            </div>
-            <div class="media-content">
-                <p class="subtitle is-6" [routerLink]="pokemon.name">{{pokemon.name}}</p>
-            </div>
+            <figure class="image is-96x96">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png" alt="Placeholder image">
+            </figure>
         </div>
+        <p class="subtitle is-6 has-text-weight-bold" [routerLink]="pokemon.name">{{pokemon.name}}</p>
     </div>
     <footer class="card-footer">
         <div class="card-footer-item">
-            <button class="button" (click)="favorite()">
+            <button class="button is-small icon-button" (click)="favorite()">
                 <span class="icon">
                     <i *ngIf="!pokemon.favorited" class="material-icons">star_border</i>
                     <i *ngIf="pokemon.favorited" class="material-icons">star</i>
@@ -21,7 +17,7 @@
             </button>
         </div>
         <div class="card-footer-item">
-            <button class="button catch-button" (click)="catch()">
+            <button class="button is-small icon-button catch-button" (click)="catch()">
                 <span class="icon">
                     <i class="material-icons" [ngClass]="{'active': pokemon.caught}">catching_pokemon</i>
                 </span>

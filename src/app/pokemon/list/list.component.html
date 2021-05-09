@@ -1,10 +1,20 @@
-<div class="columns">
+<div class="columns is-multiline">
     <div class="column">
         <app-search-input class="mr-1" (onSearch)="search($event)"></app-search-input>        
     </div>
     <div class="column has-text-right">
-        <button class="button mr-1 my-wishlist-button" [ngClass]="{'is-active': isFavoriteFilterActive}" (click)="isFavoriteFilterActive = !isFavoriteFilterActive">My Wishlist</button>
-        <button class="button my-pokemon-button" [ngClass]="{'is-active': isCaughtFilterActive}" (click)="isCaughtFilterActive = !isCaughtFilterActive">My Pokemon</button>
+        <button class="button mr-1 my-wishlist-button" [ngClass]="{'is-active': isFavoriteFilterActive}" (click)="isFavoriteFilterActive = !isFavoriteFilterActive">
+            My Wishlist
+            <span class="icon ml-2">
+                <i class="material-icons">star</i>
+            </span>
+        </button>
+        <button class="button my-pokemon-button" [ngClass]="{'is-active': isCaughtFilterActive}" (click)="isCaughtFilterActive = !isCaughtFilterActive">
+            My Pokemon
+            <span class="icon ml-2">
+                <i class="material-icons">catching_pokemon</i>
+            </span>
+        </button>
     </div>
 </div>
 
@@ -12,7 +22,7 @@
     <app-teaser *ngFor="let pokemon of data | slice:0:pagination.offset | filter: {'name': pagination.search, 'favorited': isFavoriteFilterActive, 'caught': isCaughtFilterActive}" class="column is-one-quarter" [pokemon]="pokemon"></app-teaser>
 </div>
 
-<div class="columns">
+<div class="columns is-multiline">
     <div class="column">
         <small>Showing {{pagination.count}} of {{pagination.total}} pokemon</small>
     </div>
