@@ -27,7 +27,7 @@ export class ApiService {
       return of(cache);
     }
 
-    return this.http.get<PokemonListHttpResponse>('https://pokeapi.co/api/v2/pokemon?limit=1200').pipe(
+    return this.http.get<PokemonListHttpResponse>(`${this.BASE_URL}pokemon?limit=1200`).pipe(
       map(data => data.results.map(pokemon => {
         const id = pokemon.url.split('/').slice(-2)[0] ?? '';
         return new Pokemon({
