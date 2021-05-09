@@ -4,8 +4,13 @@ export interface IPokemon {
     caught?: boolean;
     favorited?: boolean;
     moves?: any[],
+    sprites?: IPokemonSprite,
     stats?: any[],
     url?: string;
+}
+
+export interface IPokemonSprite {
+    front_shiny?: string;
 }
 
 export interface PokemonHttpResponse {

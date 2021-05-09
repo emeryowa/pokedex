@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Pokemon } from '@app/models/pokemon';
 
 @Component({
   selector: 'app-detail',
@@ -8,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailComponent implements OnInit {
 
-  pokemon: any;
+  pokemon: Pokemon;
 
   constructor(
     private route: ActivatedRoute,
@@ -16,7 +17,5 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemon = this.route.snapshot.data.pokemon;
-    console.log(this.route.snapshot.data.pokemon);
   }
-
 }
