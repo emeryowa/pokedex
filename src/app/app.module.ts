@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CommonModule } from '@angular/common';
 import { PokemonModule } from './pokemon/pokemon.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
