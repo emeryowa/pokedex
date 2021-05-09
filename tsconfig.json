@@ -19,7 +19,16 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "paths": {
+      "@app/interfaces/*": [ "src/shared/interfaces/*" ],
+      "@app/models/*": [ "src/shared/models/*" ],
+      "@app/pipes/*": [ "src/shared/pipes/*" ],
+      "@app/resolvers/*": [ "src/shared/resolvers/*" ],
+      "@app/services/*": [ "src/shared/services/*" ],
+  }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

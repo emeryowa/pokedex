@@ -5,7 +5,7 @@ import { ListComponent } from './list.component';
 import { RouterModule } from '@angular/router';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FilterPipe } from 'src/shared/pipes/filter.pipe';
+import { FilterPipe } from '@app/pipes/filter.pipe';
 
 @NgModule({
   declarations: [

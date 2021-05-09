@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { PokemonListHttpResponse } from 'src/shared/interfaces/pokemon';
-import { ApiService } from 'src/shared/services/api.service';
+import { PokemonListHttpResponse } from '@app/interfaces/pokemon';
+import { ApiService } from '@app/services/api.service';
 import { startWith, switchMap, tap } from 'rxjs/operators';
-import { Pokemon } from 'src/shared/models/pokemon';
+import { Pokemon } from '@app/models/pokemon';
 
 @Component({
   selector: 'app-list',
