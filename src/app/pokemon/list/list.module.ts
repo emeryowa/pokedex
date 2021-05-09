@@ -9,7 +9,6 @@ import { FilterPipe } from '@app/pipes/filter.pipe';
 
 @NgModule({
   declarations: [
-    TeaserComponent,
     ListComponent,
     TeaserComponent,
     SearchInputComponent,
