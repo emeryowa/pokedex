@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { IPokemon } from '../interfaces/pokemon';
 import { PokemonListHttpResponse } from '../interfaces/pokemon';
 import { Pokemon } from '../models/pokemon';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,17 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
+    private ls: LocalStorageService,
   ) { }
 
   public getAll() {
+
+    const cache = this.ls.get('pokemon_all');
+
+    if (cache) {
+      return of(cache);
+    }
+
     return this.http.get<PokemonListHttpResponse>('https://pokeapi.co/api/v2/pokemon?limit=1200').pipe(
       map(data => data.results.map(pokemon => {
         const id = pokemon.url.split('/').slice(-2)[0] ?? '';
@@ -25,7 +34,8 @@ export class ApiService {
           'id': parseInt(id),
           'name': pokemon.name
         });
-      }))
+      })),
+      tap(data => this.ls.set('pokemon_all', data))
     )
   }
 
