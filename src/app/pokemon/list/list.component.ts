@@ -67,7 +67,9 @@ export class ListComponent implements OnInit {
   public loadMore(): void {
     this.pagination.offset += this.pagination.limit + 1;
     this.pagination.page += 1;
-    this.pagination.count = this.pagination.page * this.pagination.limit + (this.pagination.page - 1);
+
+    const count = this.pagination.page * this.pagination.limit + (this.pagination.page - 1);
+    this.pagination.count = count >= this.pagination.total ? this.pagination.total : count;
   }
 
   public search(query: string) {
