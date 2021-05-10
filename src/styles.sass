@@ -5,10 +5,15 @@
     --blue: #2a75bb
     --yellow: #ffcb05
 
-.button:not(.icon-button)
-    color: var(--yellow)
-    background-color: var(--blue)    
-    font-weight: bold
+
+
+.button
+    &:not(.icon-button)
+        color: var(--yellow)
+        background-color: var(--blue)    
+        font-weight: bold
+    &.is-active
+        border: 2px solid var(--yellow)
 
 .panel
     border: 3px solid var(--blue)
