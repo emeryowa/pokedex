@@ -77,11 +77,13 @@ export class ListComponent implements OnInit {
 
   public toggleWishList(): void {
     this.showFavorites = !this.showFavorites;
+    this.showCaught = false;
     this.fetchData.next();
   }
 
   public toggleMyPokemon(): void {
     this.showCaught = !this.showCaught;
+    this.showFavorites = false;
     this.fetchData.next();
   }
 }

@@ -44,11 +44,33 @@ describe('ListComponent', () => {
     expect(button.textContent).toBe(' My Wishlist star')
   });
 
+  it('should be able to click my wishlist button', () => {
+    const button = hostElement.querySelector('.my-wishlist-button');
+
+    button.dispatchEvent(new Event('click'));
+
+    fixture.detectChanges();
+
+    expect(component.showFavorites).toBeTrue();
+    expect(component.showCaught).toBeFalse();
+  });
+
   it('should have my pokemon button', () => {
     const button = hostElement.querySelector('.my-pokemon-button');
 
     expect(button).toBeDefined();
     expect(button.textContent).toBe(' My Pokemon catching_pokemon')
+  });
+
+  it('should be able to click my pokemon button', () => {
+    const button = hostElement.querySelector('.my-pokemon-button');
+
+    button.dispatchEvent(new Event('click'));
+
+    fixture.detectChanges();
+
+    expect(component.showCaught).toBeTrue();
+    expect(component.showFavorites).toBeFalse();
   });
 
   it('should have load more button', () => {
