@@ -1,8 +1,8 @@
 <div class="columns is-multiline">
-    <div class="column">
+    <div class="column has-text-centered-mobile">
         <app-search-input class="mr-1" (onSearch)="search($event)"></app-search-input>        
     </div>
-    <div class="column has-text-right">
+    <div class="column has-text-right-tablet has-text-centered-mobile">
         <button class="button mr-1 my-wishlist-button" [ngClass]="{'is-active': showFavorites}" (click)="toggleWishList()">
             My Wishlist
             <span class="icon ml-2">
@@ -26,10 +26,10 @@
 </div>
 
 <div class="columns is-multiline">
-    <div class="column">
+    <div class="column has-text-centered-mobile">
         <small>Showing {{pagination.count}} of {{pagination.total}} <span *ngIf="pagination.search || showFavorites || showCaught">filtered</span> pokemon</small>
     </div>
-    <div class="column has-text-right">
+    <div class="column has-text-right has-text-centered-mobile">
         <button class="button load-more-button" (click)="loadMore()" [disabled]="pagination.count >= pagination.total">Load more</button>
     </div>
 </div>
