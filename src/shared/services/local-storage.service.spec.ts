@@ -19,7 +19,7 @@ describe('LocalStorageService', () => {
   });
 
   it('get() should return Object', () => {
-    expect(service.get('key')).toEqual(null);
+    expect(service.get('key')).toEqual(Object({  }));
   });
 
   it('remove() should return undefined', () => {
