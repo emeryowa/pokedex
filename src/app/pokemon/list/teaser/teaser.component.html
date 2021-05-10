@@ -1,11 +1,11 @@
 <div class="card">
-    <div class="card-content has-text-centered">
+    <div class="card-content has-text-centered is-clickable" [routerLink]="pokemon.name">
         <div class="media">
             <figure class="image is-96x96">
                 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png" alt="Placeholder image">
             </figure>
         </div>
-        <p class="subtitle is-6 has-text-weight-bold" [routerLink]="pokemon.name">{{pokemon.name}}</p>
+        <p class="subtitle is-6 has-text-weight-bold">{{pokemon.name}}</p>
     </div>
     <footer class="card-footer">
         <div class="card-footer-item">

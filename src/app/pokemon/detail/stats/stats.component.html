@@ -2,7 +2,10 @@
     <p class="panel-heading">
       My stats
     </p>
-    <div *ngFor="let stat of stats" class="panel-block">
-      {{stat.stat.name}}
+    <div *ngFor="let stat of stats" class="panel-block is-horizontal">
+      <p>{{stat.stat.name}} </p>
+
+      <p class="heading ml-5 mt-2">Base Stat: {{stat.base_stat}}</p>&nbsp;-&nbsp;
+      <p class="heading mt-2">Effort: {{stat.effort}}</p>
     </div>
 </div>

@@ -1,7 +1,34 @@
 <div class="columns is-multiline">
     <div class="column is-full has-text-centered">
         <h1 class="title">{{pokemon.name}}</h1>
-        <img [src]="pokemon.sprites.front_shiny">
+        <figure class="image is-96x96">
+            <img [src]="pokemon.sprites.front_shiny" [alt]="pokemon.name">
+        </figure>
+    </div>
+    <div class="column is-full">
+        <div class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <p class="heading">Height</p>
+                    <p class="title">{{pokemon.height}} dm</p>
+                    <p class="is-size-7">The height of this Pokémon in decimetres.</p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Weight</p>
+                <p class="title">{{pokemon.weight}} hg</p>
+                <p class="is-size-7">The weight of this Pokémon in hectograms.</p>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <p class="heading">Base Experience</p>
+                <p class="title">{{pokemon.base_experience}}</p>
+                <p class="is-size-7">The base experience gained for defeating this Pokémon.</p>
+              </div>
+            </div>
+        </div>
     </div>
     <div class="column is-half">
         <app-moves [moves]="pokemon.moves"></app-moves>

@@ -9,7 +9,7 @@ import { Pokemon } from '@app/models/pokemon';
 })
 export class DetailComponent implements OnInit {
 
-  pokemon: Pokemon;
+  pokemon: any;
 
   constructor(
     private route: ActivatedRoute,
