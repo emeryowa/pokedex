@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+import { filter, map, tap } from 'rxjs/operators';
 import { IPokemon } from '../interfaces/pokemon';
 import { PokemonListHttpResponse } from '../interfaces/pokemon';
 import { Pokemon } from '../models/pokemon';
@@ -19,7 +19,7 @@ export class ApiService {
     private ls: LocalStorageService,
   ) { }
 
-  public getAll() {
+  public getAll(): any {
 
     const cache = this.ls.get('pokemon_all');
 
@@ -41,5 +41,19 @@ export class ApiService {
 
   public getPokemon(name: string | null): Observable<IPokemon> {
     return this.http.get<IPokemon>(`${this.BASE_URL}pokemon/${name}`);
+  }
+
+  public update(id: number, property: 'caught'|'favorited', value: boolean) {
+    const data = this.ls.get('pokemon_all');
+
+    const i = data.findIndex(pokemon => pokemon.id === id);
+
+    if (i < 0) {
+      return;
+    }
+
+    data[i][property] = value;
+
+    this.ls.set('pokemon_all', data);
   }
 }

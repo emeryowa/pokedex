@@ -9,10 +9,10 @@
     </div>
     <footer class="card-footer">
         <div class="card-footer-item">
-            <button class="button is-small icon-button" (click)="favorite()">
+            <button class="button is-small icon-button favorite-button" (click)="favorite()">
                 <span class="icon">
                     <i *ngIf="!pokemon.favorited" class="material-icons">star_border</i>
-                    <i *ngIf="pokemon.favorited" class="material-icons">star</i>
+                    <i *ngIf="pokemon.favorited" class="material-icons active">star</i>
                 </span>
             </button>
         </div>

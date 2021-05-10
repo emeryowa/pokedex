@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { PokemonListHttpResponse } from '@app/interfaces/pokemon';
 import { ApiService } from '@app/services/api.service';
-import { startWith, switchMap, tap } from 'rxjs/operators';
+import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
 import { Pokemon } from '@app/models/pokemon';
 
 @Component({
@@ -12,8 +12,8 @@ import { Pokemon } from '@app/models/pokemon';
 })
 export class ListComponent implements OnInit {
 
-  data$: Observable<Pokemon[]>;
-  fetchData = new Subject<PokemonListHttpResponse>();
+  data$: Observable<any>;
+  fetchData = new Subject();
 
   pagination: any = {
     count: 19,
@@ -24,8 +24,8 @@ export class ListComponent implements OnInit {
     total: 0,
   };
 
-  isCaughtFilterActive: boolean = false;
-  isFavoriteFilterActive: boolean = false;
+  showCaught: boolean = false;
+  showFavorites: boolean = false;
 
   constructor(
     private api: ApiService,
@@ -39,7 +39,28 @@ export class ListComponent implements OnInit {
     this.data$ = this.fetchData.pipe(
       startWith([]),
       switchMap(() => this.api.getAll()),
-      tap(data => this.pagination.total = data.length)
+      map((data: any) => {
+        console.log(data);
+
+        if (this.pagination.search) {
+          data = data.filter(item => item.name.includes(this.pagination.search));
+        }
+
+        if (this.showFavorites) {
+          data = data.filter(item => item.favorited);
+        }
+
+        if (this.showCaught) {
+          data = data.filter(item => item.caught);
+        }
+
+        return data;
+      }),
+      tap(data => {
+        console.log(data);
+        this.pagination.total = data.length;
+        this.pagination.count = this.pagination.total < this.pagination.limit ? this.pagination.total : this.pagination.limit;
+      })
     );
   }
 
@@ -51,5 +72,16 @@ export class ListComponent implements OnInit {
 
   public search(query: string) {
     this.pagination.search = query;
+    this.fetchData.next();
+  }
+
+  public toggleWishList(): void {
+    this.showFavorites = !this.showFavorites;
+    this.fetchData.next();
+  }
+
+  public toggleMyPokemon(): void {
+    this.showCaught = !this.showCaught;
+    this.fetchData.next();
   }
 }

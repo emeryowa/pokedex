@@ -3,13 +3,13 @@
         <app-search-input class="mr-1" (onSearch)="search($event)"></app-search-input>        
     </div>
     <div class="column has-text-right">
-        <button class="button mr-1 my-wishlist-button" [ngClass]="{'is-active': isFavoriteFilterActive}" (click)="isFavoriteFilterActive = !isFavoriteFilterActive">
+        <button class="button mr-1 my-wishlist-button" [ngClass]="{'is-active': showFavorites}" (click)="toggleWishList()">
             My Wishlist
             <span class="icon ml-2">
                 <i class="material-icons">star</i>
             </span>
         </button>
-        <button class="button my-pokemon-button" [ngClass]="{'is-active': isCaughtFilterActive}" (click)="isCaughtFilterActive = !isCaughtFilterActive">
+        <button class="button my-pokemon-button" [ngClass]="{'is-active': showCaught}" (click)="toggleMyPokemon()">
             My Pokemon
             <span class="icon ml-2">
                 <i class="material-icons">catching_pokemon</i>
@@ -19,15 +19,18 @@
 </div>
 
 <div *ngIf="(data$ | async) as data; else loadingPokemon" class="columns is-multiline pokemon-cards">
-    <app-teaser *ngFor="let pokemon of data | slice:0:pagination.offset | filter: {'name': pagination.search, 'favorited': isFavoriteFilterActive, 'caught': isCaughtFilterActive}" class="column is-one-quarter" [pokemon]="pokemon"></app-teaser>
+    <app-teaser *ngFor="let pokemon of data | slice:0:pagination.offset | filter: {'favorited': showFavorites, 'caught': showCaught}" 
+        class="column is-one-quarter" 
+        [pokemon]="pokemon">
+    </app-teaser>
 </div>
 
 <div class="columns is-multiline">
     <div class="column">
-        <small>Showing {{pagination.count}} of {{pagination.total}} pokemon</small>
+        <small>Showing {{pagination.count}} of {{pagination.total}} <span *ngIf="pagination.search || showFavorites || showCaught">filtered</span> pokemon</small>
     </div>
     <div class="column has-text-right">
-        <button class="button load-more-button" (click)="loadMore()">Load more</button>
+        <button class="button load-more-button" (click)="loadMore()" [disabled]="pagination.count >= pagination.total">Load more</button>
     </div>
 </div>
 
