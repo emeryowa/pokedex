@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from '@app/models/pokemon';
 import { ApiService } from '@app/services/api.service';
-import { LocalStorageService } from '@app/services/local-storage.service';
 
 @Component({
   selector: 'app-teaser',

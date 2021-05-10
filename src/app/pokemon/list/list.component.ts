@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { PokemonListHttpResponse } from '@app/interfaces/pokemon';
 import { ApiService } from '@app/services/api.service';
-import { filter, map, startWith, switchMap, tap } from 'rxjs/operators';
-import { Pokemon } from '@app/models/pokemon';
+import { map, startWith, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list',
@@ -40,8 +38,6 @@ export class ListComponent implements OnInit {
       startWith([]),
       switchMap(() => this.api.getAll()),
       map((data: any) => {
-        console.log(data);
-
         if (this.pagination.search) {
           data = data.filter(item => item.name.includes(this.pagination.search));
         }
@@ -57,7 +53,6 @@ export class ListComponent implements OnInit {
         return data;
       }),
       tap(data => {
-        console.log(data);
         this.pagination.total = data.length;
         this.pagination.count = this.pagination.total < this.pagination.limit ? this.pagination.total : this.pagination.limit;
       })
