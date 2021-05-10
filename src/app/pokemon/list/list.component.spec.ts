@@ -41,14 +41,14 @@ describe('ListComponent', () => {
     const button = hostElement.querySelector('.my-wishlist-button');
 
     expect(button).toBeDefined();
-    expect(button.textContent).toBe('My Wishlist')
+    expect(button.textContent).toBe(' My Wishlist star')
   });
 
   it('should have my pokemon button', () => {
     const button = hostElement.querySelector('.my-pokemon-button');
 
     expect(button).toBeDefined();
-    expect(button.textContent).toBe('My Pokemon')
+    expect(button.textContent).toBe(' My Pokemon catching_pokemon')
   });
 
   it('should have load more button', () => {

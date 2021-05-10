@@ -1,8 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Pokemon } from '@app/models/pokemon';
+import { ApiService } from '@app/services/api.service';
 
 import { TeaserComponent } from './teaser.component';
 
@@ -15,8 +15,12 @@ describe('TeaserComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        HttpClientTestingModule,
       ],
-      declarations: [ TeaserComponent ]
+      declarations: [ TeaserComponent ],
+      providers: [
+        ApiService,
+      ]
     })
     .compileComponents();
   });
